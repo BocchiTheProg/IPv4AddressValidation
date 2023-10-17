@@ -10,6 +10,13 @@ def ipv4_address_no_regex?(str)
   end
   true
 end
+
+def ipv4_address?(str)
+  block = /\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5]/
+  str.match? /\A#{block}\.#{block}\.#{block}\.#{block}\z/
+end
+
 puts "Hello IPv4 Address validation"
-str = "12.222.3.10"
-puts "Result of method without regex: #{ipv4_address_no_regex?(str)}"
+str = "0.12.2.01"
+puts "#{str} validation is: #{ipv4_address?(str)}"
+puts "#{str} validation(method without regex) is: #{ipv4_address_no_regex?(str)}"
